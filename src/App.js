@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import WorkerTest from './components/WorkerTest';
+// import WorkerTest from './components/WorkerTest';
+import ProgressCircle from './components/ProgressCircle';
+import RectangularProgressBar from './components/RectangularProgressBar';
 
 function App() {
   const [update, setUpdate] = useState(false);
@@ -17,10 +19,12 @@ function App() {
   console.log('我是下面的');
   return (
     <div className="App">
-      我是App
+      {/* 我是App
       <button onClick={() => setUpdate(!update)}>更新</button>
-      {update ? '更新啦' : ''}
-      <WorkerTest />
+      {update ? '更新啦' : ''} */}
+      {/* <WorkerTest /> */}
+      <ProgressCircle />
+      <RectangularProgressBar />
     </div>
   );
 }

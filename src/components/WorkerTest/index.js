@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+/**
+ * web woker 示例
+ */
 export default function Index() {
   const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
   const [result, setResult] = useState([]);

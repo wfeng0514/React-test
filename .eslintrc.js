@@ -31,7 +31,6 @@ module.exports = {
     'no-extra-boolean-cast': 2,
     // 禁止不必要的括号 //(a * b) + c;//报错
     'no-extra-parens': 0,
-
     // 强制所有控制语句使用一致的括号风格
     curly: [2, 'all'],
     // 禁止 catch 子句的参数与外层作用域中的变量同名
@@ -54,7 +53,7 @@ module.exports = {
     // 风格指南 //
     // ////////////
     // 指定数组的元素之间要以空格隔开(, 后面)， never参数：[ 之前和 ] 之后不能带空格，always参数：[ 之前和 ] 之后必须带空格
-    'array-bracket-spacing': [2, 'never'],
+    'array-bracket-spacing': [2, 'always'],
     // 禁止或强制在单行代码块中使用空格(禁用)
     'block-spacing': [1, 'never'],
     // 强制使用一致的缩进 第二个参数为 "tab" 时，会使用tab，
@@ -247,7 +246,6 @@ module.exports = {
     'wrap-regex': 0,
     // 禁止词法声明 (let、const、function 和 class) 出现在 case或default 子句中
     'no-case-declarations': ['warn'],
-
     // ////////////
     // ES6.相关 //
     // ////////////
