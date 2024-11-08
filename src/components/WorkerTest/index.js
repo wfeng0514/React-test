@@ -5,12 +5,10 @@ export default function Index() {
   const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const handleCalculate = () => { 
+  const handleCalculate = () => {
     setLoading(true);
-    
     // 使用外部 Worker 文件
     const worker = new Worker(new URL('./cal.worker.js', import.meta.url), { type: 'module' });
-    
     worker.postMessage(numbers);
 
     /**
@@ -18,15 +16,16 @@ export default function Index() {
      * @param {MessageEvent} event worker 传递的消息对象
      * @param {number[]} event.data 计算结果
      */
-    worker.onmessage = function(event) {
-      console.log("计算结果：", event.data);
-      
+    worker.onmessage = function (event) {
+      console.log('计算结果：', event.data);
+
       setResult(event.data);
+      setNumbers(event.data);
       setLoading(false);
       worker.terminate();
     };
 
-    worker.onerror = function(error) {
+    worker.onerror = function (error) {
       console.error('Worker 错误:', error);
       setLoading(false);
       worker.terminate();

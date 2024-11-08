@@ -1,28 +1,25 @@
-import { useEffect, useState } from "react";
-// import TestConetnt from "./components//index";
-import WorkerTest from './components/WorkerTest'
+import { useEffect, useState } from 'react';
+import WorkerTest from './components/WorkerTest';
 
 function App() {
   const [update, setUpdate] = useState(false);
 
-  console.log("我是上面的");
+  console.log('我是上面的');
 
   useEffect(() => {
-    console.log("useEffect 中间代码块");
+    console.log('useEffect 中间代码块');
 
     return () => {
-      console.log("useEffect return 代码块");
+      console.log('useEffect return 代码块');
     };
   }, [update]);
 
-  console.log("我是下面的");
+  console.log('我是下面的');
   return (
     <div className="App">
       我是App
       <button onClick={() => setUpdate(!update)}>更新</button>
-     {update ? "更新啦" : ""}
-
-      {/* <TestConetnt /> */}
+      {update ? '更新啦' : ''}
       <WorkerTest />
     </div>
   );
