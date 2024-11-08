@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 // import TestConetnt from "./components//index";
-import Intercommunication from './components/Intercommunication'
+import WorkerTest from './components/WorkerTest'
 
 function App() {
   const [update, setUpdate] = useState(false);
@@ -23,7 +23,7 @@ function App() {
      {update ? "更新啦" : ""}
 
       {/* <TestConetnt /> */}
-      <Intercommunication />
+      <WorkerTest />
     </div>
   );
 }

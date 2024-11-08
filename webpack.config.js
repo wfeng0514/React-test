@@ -43,6 +43,14 @@ module.exports = {
           loader: 'babel-loader',  // 使用 Babel loader
         },
       },
+      {
+        test: /\.worker\.(js|ts)$/,
+        use: [
+             {
+                 loader: 'worker-loader',
+             },
+        ],
+      },
     ]
   },
   plugins: [
