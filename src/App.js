@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+// import TestConetnt from "./components//index";
+import Intercommunication from './components/Intercommunication'
 
 function App() {
+  const [update, setUpdate] = useState(false);
+
+  console.log("我是上面的");
+
+  useEffect(() => {
+    console.log("useEffect 中间代码块");
+
+    return () => {
+      console.log("useEffect return 代码块");
+    };
+  }, [update]);
+
+  console.log("我是下面的");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      我是App
+      <button onClick={() => setUpdate(!update)}>更新</button>
+     {update ? "更新啦" : ""}
+
+      {/* <TestConetnt /> */}
+      <Intercommunication />
     </div>
   );
 }

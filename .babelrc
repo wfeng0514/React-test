@@ -1,0 +1,6 @@
+{
+  "presets": [
+    "@babel/preset-env", //用于转换现代 JavaScript 语法（例如箭头函数、let/const 等）。
+    "@babel/preset-react", //用于转换 JSX 语法
+  ]
+}
