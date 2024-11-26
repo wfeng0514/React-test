@@ -1,9 +1,10 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
+// const ESLintPlugin = require('eslint-webpack-plugin');
 const LicenseWebpackPlugin = require('license-webpack-plugin').LicenseWebpackPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const GenericPlugin = require('./plugins/GenericPlugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -69,12 +70,16 @@ module.exports = {
       outputFilename: 'combined-licenses.txt',
     }),
     new CleanWebpackPlugin(), // 清理 dist 目录
-    isDev
-      ? new ESLintPlugin({
-          extensions: ['js', 'jsx', 'ts', 'tsx'], // 支持的文件类型
-          fix: true, // 自动修复可修复的错误
-        })
-      : null,
+    new GenericPlugin({
+      logFilePath: path.resolve(__dirname, 'build.log'),
+      message: '打包完成 执行后续操作',
+    }),
+    // isDev
+    //   ? new ESLintPlugin({
+    //       extensions: ['js', 'jsx', 'ts', 'tsx'], // 支持的文件类型
+    //       fix: true, // 自动修复可修复的错误
+    //     })
+    //   : null,
   ],
   resolve: {
     extensions: ['.js', '.jsx'], // 解析 .js 和 .jsx 文件
