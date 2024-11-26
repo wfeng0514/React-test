@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 // import WorkerTest from './components/WorkerTest';
-import ProgressCircle from './components/ProgressCircle';
-import RectangularProgressBar from './components/RectangularProgressBar';
+// import ProgressCircle from './components/ProgressCircle';
+// import RectangularProgressBar from './components/RectangularProgressBar';
+// import Tabs from './components/Tabs';
+import ImageViewer from './components/ImageViewer';
+// import { Example } from './components/ScrollList';
 
 function App() {
   const [update, setUpdate] = useState(false);
@@ -23,8 +26,11 @@ function App() {
       <button onClick={() => setUpdate(!update)}>更新</button>
       {update ? '更新啦' : ''} */}
       {/* <WorkerTest /> */}
-      <ProgressCircle />
-      <RectangularProgressBar />
+      {/* <ProgressCircle />
+      <RectangularProgressBar /> */}
+      {/* <Tabs /> */}
+      <ImageViewer />
+      {/* <Example /> */}
     </div>
   );
 }

@@ -1,0 +1,55 @@
+/* src/Tabs.css */
+.tabs-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.tabs-container {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  cursor: pointer;
+  border-bottom: 2px solid #ccc; /* 增加一个底部边框 */
+}
+
+.tab {
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.tab:hover {
+  color: #ff4500;
+}
+
+.tab.active {
+  font-weight: bold;
+  color: #ff4500;
+}
+
+.tab-content {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.underline {
+  position: absolute;
+  height: 3px;
+  background-color: #ff4500;
+  bottom: 0;
+  transition:
+    left 0.3s ease,
+    width 0.3s ease,
+    transform 0.3s ease; /* 增加 transform */
+  transform: scaleX(1); /* 初始状态的下划线 */
+  will-change: left, width, transform; /* 为性能优化 */
+}
+
+.underline.sticky {
+  transition:
+    left 0.5s ease,
+    width 0.5s ease,
+    transform 0.5s ease;
+  transform: scaleX(1.1); /* 模拟粘滞效果 */
+}
