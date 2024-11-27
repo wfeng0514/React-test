@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 // import ProgressCircle from './components/ProgressCircle';
 // import RectangularProgressBar from './components/RectangularProgressBar';
 // import Tabs from './components/Tabs';
-import ImageViewer from './components/ImageViewer';
-// import { Example } from './components/ScrollList';
+// import ImageViewer from './components/ImageViewer';
+import { Example } from './components/ScrollList';
 
 function App() {
   const [update, setUpdate] = useState(false);
@@ -29,8 +29,8 @@ function App() {
       {/* <ProgressCircle />
       <RectangularProgressBar /> */}
       {/* <Tabs /> */}
-      <ImageViewer />
-      {/* <Example /> */}
+      {/* <ImageViewer /> */}
+      <Example />
     </div>
   );
 }

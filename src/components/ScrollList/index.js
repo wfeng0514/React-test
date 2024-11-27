@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import InfiniteScrollList from './InfiniteScrollList';
-import { Provider } from './common';
+import { Provider, useLazyShow } from './common';
 
 export const Example = () => {
   const [hasMore, setHasMore] = useState(true);
+  const { onShow, onRef } = useLazyShow();
+
+  // 使用 useRef 来创建一个包含 10 个元素引用的数组
+  const refs = Array.from({ length: 10 }, () => useRef());
+
+  // 注册回调，当元素1进入视口时调用
+  useEffect(() => {
+    for (let i = 0; i < refs.length; i++) {
+      onShow(`testItem${i}`, () => {
+        console.log(`testItem ${i + 1} has entered the viewport!`);
+      });
+    }
+  }, [onShow]);
 
   // 模拟异步加载数据
   const onLoadMore = async (query) =>
@@ -19,7 +32,14 @@ export const Example = () => {
 
   return (
     <Provider loadMore={onLoadMore} hasMore={hasMore} initialData={new Array(20).fill(0).map(() => `数据 ${Math.random()}`)}>
-      <InfiniteScrollList renderItem={(data) => <div>{data}</div>} />
+      {/* <InfiniteScrollList renderItem={(data) => <div>{data}</div>} /> */}
+      {refs.map((_, i) => {
+        return (
+          <div key={i} ref={onRef(`testItem${i}`)} className="testItem">
+            testItem{i + 1}
+          </div>
+        );
+      })}
     </Provider>
   );
 };
