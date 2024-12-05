@@ -1,12 +1,17 @@
 const path = require('path');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const ESLintPlugin = require('eslint-webpack-plugin');
-const LicenseWebpackPlugin = require('license-webpack-plugin').LicenseWebpackPlugin;
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const GenericPlugin = require('./plugins/GenericPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // HTML 插件,用于生成 HTML 文件,并自动引入打包后的 JS 文件
+// const ESLintPlugin = require('eslint-webpack-plugin');// ESLint 插件，用于在 Webpack 构建过程中进行 ESLint 检查
+const LicenseWebpackPlugin = require('license-webpack-plugin').LicenseWebpackPlugin; // 许可证插件，用于生成许可证文件
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 清理插件，用于清理构建目录
+const GenericPlugin = require('./plugins/GenericPlugin'); // 自定义插件
 
-const isDev = process.env.NODE_ENV === 'development';
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // CSS 提取插件，用于将 CSS 提取到单独的文件中
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin'); // CSS 最小化插件，用于压缩 CSS 文件
+const TerserPlugin = require('terser-webpack-plugin'); // JavaScript 压缩插件，用于压缩 JavaScript 文件
+const CopyWebpackPlugin = require('copy-webpack-plugin'); // 文件复制插件，用于复制文件
+
+// const isDev = process.env.NODE_ENV === 'development';
 
 /**
  * 自定义插件：在打包后运行脚本
@@ -31,34 +36,24 @@ class MyCustomPlugin {
 
 module.exports = {
   entry: {
-    test: './src/index.js',
+    profile: './src/index.js',
   },
   module: {
     rules: [
       // 处理 CSS 文件
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'], // 使用 style-loader 和 css-loader
+        use: [
+          MiniCssExtractPlugin.loader, // 提取 CSS 到独立文件
+          'css-loader',
+        ],
       },
       {
         test: /\.scss$/,
         use: [
-          'style-loader', // 将 CSS 插入到页面中
-          {
-            loader: 'css-loader', // 解析 CSS 文件，支持 CSS Modules
-            options: {
-              modules: true, // 启用 CSS Modules
-              sourceMap: true,
-            },
-          },
-          'postcss-loader', // 添加浏览器前缀
-          'resolve-url-loader', // 解析 CSS 中的路径
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true, // 启用 sass-loader 的 sourceMap
-            },
-          },
+          MiniCssExtractPlugin.loader, // 提取 CSS 到独立文件
+          'css-loader',
+          'sass-loader',
         ],
       },
       {
@@ -80,6 +75,13 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/, // 匹配图片文件的扩展名
+        type: 'asset/resource', // 使用内建的 resource 处理
+        generator: {
+          filename: 'imgs/[name][ext]', // 输出文件名，包含文件名、哈希值和扩展名
+        },
+      },
     ],
   },
   plugins: [
@@ -87,6 +89,7 @@ module.exports = {
     new MyCustomPlugin(), // 使用自定义插件
     new HtmlWebpackPlugin({
       template: './public/index.html', // HTML 模板文件
+      favicon: './public/favicon.ico', // 图标路径
     }),
     new LicenseWebpackPlugin({
       outputFilename: 'combined-licenses.txt',
@@ -96,6 +99,19 @@ module.exports = {
       logFilePath: path.resolve(__dirname, 'build.log'),
       message: '打包完成 执行后续操作',
     }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css', // 输出的 CSS 文件名
+    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       // 从public中复制文件
+    //       from: path.resolve(__dirname, 'public/imgs'),
+    //       // 把复制的文件存放到dist里面
+    //       to: path.resolve(__dirname, 'dist/imgs'),
+    //     },
+    //   ],
+    // }),
     // isDev
     //   ? new ESLintPlugin({
     //       extensions: ['js', 'jsx', 'ts', 'tsx'], // 支持的文件类型
@@ -103,12 +119,23 @@ module.exports = {
     //     })
     //   : null,
   ],
-  resolve: {
-    extensions: ['.js', '.jsx', '.scss'], // 自动解析 .js 和 .jsx 文件
+  optimization: {
+    minimize: true, // 启用压缩
+    minimizer: [
+      new TerserPlugin(), // 压缩 JS
+      new CssMinimizerPlugin(), // 使用 css-minimizer-webpack-plugin 压缩 CSS
+    ],
   },
   output: {
+    clean: true, // 清理输出目录
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss'], // 自动解析 .js 和 .jsx 文件
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
   devtool: 'source-map', // 开发环境使用 source map
   stats: {

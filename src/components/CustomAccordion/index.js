@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import up from '@/assets/imgs/up.png';
 import './index.scss';
 
 /**
@@ -38,7 +39,7 @@ export const Accordion = (props) => {
           {deleteIcon}
         </div>
         <div className={['iconWrap', !isOpen ? 'active' : ''].join(' ')}>
-          <img src="/imgs/up.png" />
+          <img src={up} />
         </div>
       </div>
       <div ref={itemRef} className={['item', activeClass('active-item')].join(' ')}>
@@ -48,10 +49,27 @@ export const Accordion = (props) => {
   );
 };
 
+/**
+ * 自定义手风琴使用
+ */
 export const CustomAccordion = () => {
   return (
     <div className="testCustomAccordion">
-      <Accordion title={`标题`}>
+      <Accordion title={`标题1`}>
+        <div className="listItem">
+          <div className="listItem-label">LABEL1内容</div>
+          <div className="listItem-content">你好</div>
+        </div>
+        <div className="listItem">
+          <div className="listItem-label">LABEL2内容</div>
+          <div className="listItem-content">你好</div>
+        </div>
+        <div className="listItem">
+          <div className="listItem-label">LABEL3内容</div>
+          <div className="listItem-content">你好</div>
+        </div>
+      </Accordion>
+      <Accordion title={`标题2`}>
         <div className="listItem">
           <div className="listItem-label">LABEL内容</div>
           <div className="listItem-content">你好</div>
