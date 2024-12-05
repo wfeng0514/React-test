@@ -1,0 +1,96 @@
+// 自定义手风琴
+#custom-accordion {
+  margin-bottom: 10px;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 8px;
+
+  .header-wrap{
+    width: auto;
+    height: 44px;
+    position: relative;
+    z-index: 99;
+    // font-size: 0.14rem;
+    font-weight: 800;
+    border: none !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #000;
+    background-color: #fff;
+    box-sizing: content-box;
+    padding: 0 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+
+    .titleWrap{
+      display: flex;
+      align-items: center;
+      img{
+        width: 15px;
+        margin-left: 8px;
+      }
+    }
+
+    .iconWrap{
+      transition: all .4s;
+      img{
+        width: 14px;
+      }
+    }
+    .active{
+      transition: all .4s;
+      transform: rotate(180deg);
+    }
+  }
+
+  .active-header{
+    border-bottom: 1px solid #eee !important;
+  }
+  .item{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    position: relative;
+    top: -100px;
+    z-index: 1px;
+    opacity: 0;
+    background-color: #fff;
+    transition: all .2s ease-in-out;
+  }
+
+  .active-item{
+    top: 0;
+    opacity: 1;
+    transition: all .2s ease-in-out;
+  }
+}
+
+
+// 公共列表样式
+.testCustomAccordion{
+  max-width: 428px;
+  margin: 0 auto;
+  padding: 15px;
+ 
+}
+.listItem{
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  margin-bottom: 10px;
+  &-label{
+    color: #000;
+  }
+
+  &-content{
+    color: #878787;
+    display: flex;
+    align-items: center;
+  }
+}

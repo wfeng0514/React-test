@@ -41,6 +41,27 @@ module.exports = {
         use: ['style-loader', 'css-loader'], // 使用 style-loader 和 css-loader
       },
       {
+        test: /\.scss$/,
+        use: [
+          'style-loader', // 将 CSS 插入到页面中
+          {
+            loader: 'css-loader', // 解析 CSS 文件，支持 CSS Modules
+            options: {
+              modules: true, // 启用 CSS Modules
+              sourceMap: true,
+            },
+          },
+          'postcss-loader', // 添加浏览器前缀
+          'resolve-url-loader', // 解析 CSS 中的路径
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true, // 启用 sass-loader 的 sourceMap
+            },
+          },
+        ],
+      },
+      {
         test: /\.worker\.js$/,
         use: { loader: 'worker-loader' },
       },
@@ -62,6 +83,7 @@ module.exports = {
     ],
   },
   plugins: [
+    require('autoprefixer'), // 自动添加浏览器前缀
     new MyCustomPlugin(), // 使用自定义插件
     new HtmlWebpackPlugin({
       template: './public/index.html', // HTML 模板文件
@@ -82,12 +104,13 @@ module.exports = {
     //   : null,
   ],
   resolve: {
-    extensions: ['.js', '.jsx'], // 解析 .js 和 .jsx 文件
+    extensions: ['.js', '.jsx', '.scss'], // 自动解析 .js 和 .jsx 文件
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
   },
+  devtool: 'source-map', // 开发环境使用 source map
   stats: {
     children: true, // This enables detailed logging for child compilations
     // You can also enable other stats options like 'warnings' or 'errors'
