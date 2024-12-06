@@ -8,7 +8,7 @@ import './index.scss';
 export const Accordion = (props) => {
   let { title, children, className = '', deleteIcon } = props;
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const itemRef = useRef(null);
 
   useEffect(() => {
