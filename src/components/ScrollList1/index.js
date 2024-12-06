@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import InfiniteScrollList from './InfiniteScrollList';
 
-export const Example = () => {
+export const ScrollList1 = () => {
   const [dataSource, setDataSource] = useState(new Array(40).fill('初始化数据'));
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);

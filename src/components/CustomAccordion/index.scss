@@ -56,10 +56,11 @@
     padding: 0;
     position: relative;
     top: -100px;
-    z-index: 1px;
+    z-index: 1;
     opacity: 0;
     background-color: #fff;
     transition: all .2s ease-in-out;
+    border: none !important;
   }
 
   .active-item{
@@ -72,7 +73,8 @@
 
 // 公共列表样式
 .testCustomAccordion{
-  max-width: 428px;
+  // max-width: 428px;
+  width: 100%;
   margin: 0 auto;
   padding: 15px;
  

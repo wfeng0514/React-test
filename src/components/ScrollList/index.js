@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import InfiniteScrollList from './InfiniteScrollList';
 import { Provider, useLazyShow } from './common';
 
-export const Example = () => {
+export const ScrollList = () => {
   const [hasMore, setHasMore] = useState(true);
   const { onShow, onRef } = useLazyShow();
 
@@ -31,15 +31,17 @@ export const Example = () => {
     });
 
   return (
-    <Provider loadMore={onLoadMore} hasMore={hasMore} initialData={new Array(20).fill(0).map(() => `数据 ${Math.random()}`)}>
-      {/* <InfiniteScrollList renderItem={(data) => <div>{data}</div>} /> */}
-      {refs.map((_, i) => {
-        return (
-          <div key={i} ref={onRef(`testItem${i}`)} className="testItem">
-            testItem{i + 1}
-          </div>
-        );
-      })}
-    </Provider>
+    <div>
+      <Provider loadMore={onLoadMore} hasMore={hasMore} initialData={new Array(20).fill(0).map(() => `数据 ${Math.random()}`)}>
+        {/* <InfiniteScrollList renderItem={(data) => <div>{data}</div>} /> */}
+        {refs.map((_, i) => {
+          return (
+            <div key={i} ref={onRef(`testItem${i}`)} className="testItem">
+              testItem{i + 1}
+            </div>
+          );
+        })}
+      </Provider>
+    </div>
   );
 };
