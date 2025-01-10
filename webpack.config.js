@@ -9,7 +9,7 @@ const GenericPlugin = require('./plugins/GenericPlugin'); // 自定义插件
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // CSS 提取插件，用于将 CSS 提取到单独的文件中
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin'); // CSS 最小化插件，用于压缩 CSS 文件
 const TerserPlugin = require('terser-webpack-plugin'); // JavaScript 压缩插件，用于压缩 JavaScript 文件
-const CopyWebpackPlugin = require('copy-webpack-plugin'); // 文件复制插件，用于复制文件
+// const CopyWebpackPlugin = require('copy-webpack-plugin'); // 文件复制插件，用于复制文件
 
 // const isDev = process.env.NODE_ENV === 'development';
 

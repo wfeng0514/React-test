@@ -1,0 +1,37 @@
+.container {
+  overflow-x: auto; /* 使整个容器可横向滚动 */
+  white-space: nowrap; /* 防止文本换行 */
+  max-width: 100%; /* 设置容器的最大宽度 */
+}
+
+.scrollable-container {
+  display: flex;
+  flex-direction: column;
+  width: max-content; /* 容器宽度会根据内容自适应 */
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  width: max-content; /* 每个项的宽度根据内容自适应 */
+  min-width: 400px; /* 可以根据需要设置每一项的最小宽度 */
+  border-bottom: 1px solid #ddd; /* 为了区分每个项，可以加个底部边框 */
+}
+
+.name {
+  position: sticky;
+  left: 0;
+
+  background-color: #fff;
+  padding: 10px;
+  width: 150px; /* 固定名称列的宽度 */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+  flex-shrink: 0; /* 防止缩小 */
+}
+
+.content {
+  flex-grow: 1;
+  padding: 10px;
+  white-space: nowrap; /* 防止文本换行 */
+  overflow-x: auto; /* 允许内容横向滚动 */
+}
