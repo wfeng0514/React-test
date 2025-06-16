@@ -36,12 +36,7 @@ const Index = () => {
     return () => setProgress(0);
   }, []);
 
-  return (
-    <div>
-      <h1>矩形进度条</h1>
-      <RectangularProgressBar progress={progress} />
-    </div>
-  );
+  return <RectangularProgressBar progress={progress} />;
 };
 
 export default Index;

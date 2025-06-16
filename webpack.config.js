@@ -132,7 +132,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.scss'], // 自动解析 .js 和 .jsx 文件
+    extensions: ['.js', '.jsx', '.scss', '.ts', '.tsx'], // 自动解析 .js 和 .jsx 文件
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
