@@ -3,7 +3,8 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
-const { v4: uuidv4 } = require('uuid');
+// const { v4: uuidv4 } = require('uuid');
+const iconv = require('iconv-lite');
 
 const app = express();
 
@@ -42,9 +43,9 @@ const resolveSafePath = (baseDir, ...paths) => {
 };
 
 // 文件存储目录配置
-const UPLOAD_BASE = path.resolve(__dirname, 'uploads');
-const UPLOAD_DIR = resolveSafePath(UPLOAD_BASE, 'completed');
-const TEMP_DIR = resolveSafePath(UPLOAD_BASE, 'temp');
+const UPLOAD_BASE = path.resolve(__dirname, 'uploads'); // 确保 uploads 目录在当前目录下
+const UPLOAD_DIR = resolveSafePath(UPLOAD_BASE, 'completed'); // 完成的上传文件目录
+const TEMP_DIR = resolveSafePath(UPLOAD_BASE, 'temp'); // 临时分片存储目录
 
 // 确保目录存在（安全创建）
 const ensureDirExists = (dirPath) => {
@@ -97,10 +98,10 @@ app.post('/upload', upload.single('file'), (req, res, next) => {
     if (!req.file) {
       throw new Error('No file uploaded');
     }
-
-    const originalName = sanitizeFilename(req.file.originalname);
-    const newPath = resolveSafePath(UPLOAD_DIR, `${uuidv4()}_${originalName}`);
-
+    console.log('req.file', req.file);
+    // 假设 originalname 是乱码，尝试用 'gbk' 或 'utf-8' 解码
+    const originalName = iconv.decode(Buffer.from(req.file.originalname, 'binary'), 'utf8');
+    const newPath = resolveSafePath(UPLOAD_DIR, `${originalName}`);
     // 重命名文件以包含原始文件名
     fs.renameSync(req.file.path, newPath);
 

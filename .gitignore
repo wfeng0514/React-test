@@ -12,3 +12,5 @@ yarn-debug.log*
 yarn-error.log*
 build.log
 /test
+
+/src/components/File/uploads
