@@ -7,6 +7,8 @@ import { ScrollList1 } from '@/components/ScrollList1';
 import WorkerTest from '@/components/WorkerTest';
 import HoverScrollComponent from '@/components/HoverScrollComponent';
 import File from '@/components/File';
+import ApprovalForm from '@/components/ApprovalForm';
+import schema from '../../assets/json/schema.json';
 
 export const TABS = [
   { name: '自定义手风琴', content: <CustomAccordion /> },
@@ -31,4 +33,5 @@ export const TABS = [
   { name: 'Worker', content: <WorkerTest /> },
   { name: '粘贴滚动效果', content: <HoverScrollComponent /> },
   { name: 'File', content: <File /> },
+  { name: '超级审批', content: <ApprovalForm schemaData={schema} /> },
 ];

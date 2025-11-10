@@ -1,0 +1,154 @@
+.container {
+  padding: 24px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.card {
+  margin-bottom: 24px;
+
+  :global(.ant-card-head) {
+    // background: #fafafa;
+    // border-bottom: 1px solid #e8e8e8;
+    border: none;
+    padding: 10px 24px;
+  }
+  :global(.ant-card-body) {
+    padding: 0 24px;
+  }
+}
+
+.formLayout {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.column {
+  flex: 1;
+}
+
+.formItem {
+  :global(.ant-form-item-label) {
+    width: 30%;
+    margin-right: 10px;
+    label {
+      width: 100%;
+      font-weight: bold !important;
+      text-align: left !important;
+      white-space: nowrap;
+      color: #333;
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  :global(.ant-form-item-control) {
+    :global(.ant-input) {
+      background-color: #f5f5f5 !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 4px;
+      color: #666;
+      font-size: 12px;
+    }
+
+    :global(.ant-input-affix-wrapper) {
+      background-color: #f5f5f5 !important;
+      border: none;
+      border-radius: 4px;
+    }
+  }
+}
+
+.editable {
+  :global(.ant-form-item-control) {
+    :global(.ant-input) {
+      background-color: #fff !important;
+      border: 1px solid #d9d9d9 !important;
+      box-shadow: none !important;
+      color: #000;
+    }
+
+    .ant-input-affix-wrapper {
+      background-color: #fff !important;
+      border: 1px solid #d9d9d9;
+    }
+  }
+}
+
+.tableSection {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+
+  .fileIcon {
+    margin-right: 8px;
+    color: #666;
+  }
+}
+
+.linkItem {
+  display: flex;
+  align-items: center;
+
+  .linkIcon {
+    margin-right: 8px;
+    color: #1890ff;
+  }
+}
+
+// 两列网格布局版本（备用）
+.gridLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+// 表单标签布局配置
+.formItemLayout {
+  :global(.ant-form-item-label) {
+    flex: 0 0 120px !important;
+
+    label {
+      font-weight: bold !important;
+      text-align: left !important;
+      white-space: nowrap !important; // 不换行
+      overflow: hidden !important; // 隐藏溢出
+      text-overflow: ellipsis !important; // 三点省略
+      color: #333;
+    }
+  }
+
+  :global(.ant-form-item-control) {
+    flex: 1;
+  }
+}
+
+.fullWidthItem {
+  :global(.ant-form-item-label) {
+    flex: 0 0 100% !important;
+    text-align: left !important;
+  }
+
+  :global(.ant-form-item-control) {
+    flex: 0 0 100% !important;
+  }
+}

@@ -324,6 +324,21 @@ app.use((err, req, res, next) => {
   });
 });
 
+// 启动服务端点
+app.post('/api/server/start', (req, res) => {
+  const nodeProcess = exec('node upload_sever.js', (error, stdout, stderr) => {
+    if (error) {
+      return res.status(500).json({ error: stderr });
+    }
+    res.json({ message: 'Server started', output: stdout });
+  });
+
+  // 实时输出日志
+  nodeProcess.stdout.on('data', (data) => {
+    console.log(data);
+  });
+});
+
 // 启动服务器
 const PORT = parseInt(process.env.PORT) || 3001;
 app.listen(PORT, () => {

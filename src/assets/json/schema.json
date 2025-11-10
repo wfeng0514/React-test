@@ -1,0 +1,1134 @@
+{
+    "code": 0,
+    "msg": "success",
+    "form_ui": {
+        "i18n": {
+            "store": {
+                "en": {
+                    "processInformation": "Details"
+                },
+                "zh": {
+                    "processInformation": "审批详情"
+                },
+                "ja": {
+                    "processInformation": "詳細"
+                }
+            }
+        },
+        "meta": {
+            "atSchemaVersion": "0.1.0"
+        },
+        "root": {
+            "node": {
+                "type": "element",
+                "content": {
+                    "props": {
+                        "type": "reference",
+                        "content": {
+                            "referenceType": "state",
+                            "id": "doc"
+                        },
+                        "layout": "inline"
+                    },
+                    "children": [
+                        {
+                            "type": "element",
+                            "content": {
+                                "props": {
+                                    "column": 1,
+                                    "title": {
+                                        "type": "i18n",
+                                        "content": {
+                                            "fallback": "审批详情",
+                                            "key": "processInformation"
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "标题",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "requestname"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "申请时间",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sqsj"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "申请编号",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sqbh"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "填表人姓名",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "fqrxm"
+                                                },
+                                                "elementType": "UserField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "填表人工号",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "fqrgh"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "填表人部门",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "bm"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "申请人姓名",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sqrxm"
+                                                },
+                                                "elementType": "UserField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "申请人工号",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sqrgh"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "申请人岗位",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "gw"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "申请人部门",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sqrbm"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "申请人工作地点",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sqrgzdd"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "申请人主管",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sqrzg"
+                                                },
+                                                "elementType": "UserField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "申请人区域",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sqrqy"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "申请人国家",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sqrgj"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "申请类型",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sqlx"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "是否为市内出差",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sfwsncc"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "变更事由（变更）",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "bgsybg"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "差旅申请单初始",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "clsqdcs"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "变更说明",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "bgsm"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "出差事由（申请）",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "ccsysq"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "新项目跨城市培训支持",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sfwkcsxxmpx"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "票据张数",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "pjzs"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "说明",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sm"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "公司代码",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "gsdm"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "公司名称",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "gsms"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "利润中心代码",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "lrzxdm"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "利润中心描述",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "lrzxms"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "是否关联项目？",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sfglxm"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "子项目号/WBS号",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "zxmhwbsh"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "费用承担部门代码",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "fycdbmdm"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "成本中心名称",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "cbzxmc"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "内部订单类型",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "nbddlx"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "内部订单",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "nbdd"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "费用公司描述",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "fygsms"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "费用利润中心描述",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "fylrzxms"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "利润中心控制",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "lrzxkz"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "成本中心控制",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "cbzxkz"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "项目预算控制",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "xmyskz"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "defaultData": {
+                                                        "list": {
+                                                            "type": "reference",
+                                                            "content": {
+                                                                "referenceType": "state",
+                                                                "id": "_initialFormValues.formtable_main_950_dt1"
+                                                            }
+                                                        }
+                                                    },
+                                                    "label": "SOH",
+                                                    "groupProps": {
+                                                        "title": "SOH",
+                                                        "usePlainTitle": true
+                                                    },
+                                                    "visibleColumns": [
+                                                        {
+                                                            "title": "工号",
+                                                            "id": "42759",
+                                                            "render": {
+                                                                "type": "element",
+                                                                "content": {
+                                                                    "directives": {
+                                                                        "renderer": true,
+                                                                        "rendererArgs": [
+                                                                            {
+                                                                                "name": "$rowData",
+                                                                                "propType": "object"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "props": {
+                                                                        "defaultValue": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData.field42759_0"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._label"
+                                                                            }
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._name"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "elementType": "InputField"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "title": "行程人姓名",
+                                                            "id": "42760",
+                                                            "render": {
+                                                                "type": "element",
+                                                                "content": {
+                                                                    "directives": {
+                                                                        "renderer": true,
+                                                                        "rendererArgs": [
+                                                                            {
+                                                                                "name": "$rowData",
+                                                                                "propType": "object"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "props": {
+                                                                        "defaultValue": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData.field42760_0"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._label"
+                                                                            }
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._name"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "elementType": "UserField"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "title": "出发日期",
+                                                            "id": "42761",
+                                                            "render": {
+                                                                "type": "element",
+                                                                "content": {
+                                                                    "directives": {
+                                                                        "renderer": true,
+                                                                        "rendererArgs": [
+                                                                            {
+                                                                                "name": "$rowData",
+                                                                                "propType": "object"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "props": {
+                                                                        "defaultValue": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData.field42761_0"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._label"
+                                                                            }
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._name"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "elementType": "InputField"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "title": "到达日期",
+                                                            "id": "42762",
+                                                            "render": {
+                                                                "type": "element",
+                                                                "content": {
+                                                                    "directives": {
+                                                                        "renderer": true,
+                                                                        "rendererArgs": [
+                                                                            {
+                                                                                "name": "$rowData",
+                                                                                "propType": "object"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "props": {
+                                                                        "defaultValue": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData.field42762_0"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._label"
+                                                                            }
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._name"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "elementType": "InputField"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "title": "交通工具",
+                                                            "id": "42763",
+                                                            "render": {
+                                                                "type": "element",
+                                                                "content": {
+                                                                    "directives": {
+                                                                        "renderer": true,
+                                                                        "rendererArgs": [
+                                                                            {
+                                                                                "name": "$rowData",
+                                                                                "propType": "object"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "props": {
+                                                                        "defaultValue": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData.field42763_0"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._label"
+                                                                            }
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._name"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "elementType": "InputField"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "title": "国家",
+                                                            "id": "42764",
+                                                            "render": {
+                                                                "type": "element",
+                                                                "content": {
+                                                                    "directives": {
+                                                                        "renderer": true,
+                                                                        "rendererArgs": [
+                                                                            {
+                                                                                "name": "$rowData",
+                                                                                "propType": "object"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "props": {
+                                                                        "defaultValue": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData.field42764_0"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._label"
+                                                                            }
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._name"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "elementType": "InputField"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "title": "出发地最终赋值字段",
+                                                            "id": "42770",
+                                                            "render": {
+                                                                "type": "element",
+                                                                "content": {
+                                                                    "directives": {
+                                                                        "renderer": true,
+                                                                        "rendererArgs": [
+                                                                            {
+                                                                                "name": "$rowData",
+                                                                                "propType": "object"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "props": {
+                                                                        "defaultValue": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData.field42770_0"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._label"
+                                                                            }
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._name"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "elementType": "InputField"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "title": "目的地最终赋值字段",
+                                                            "id": "42771",
+                                                            "render": {
+                                                                "type": "element",
+                                                                "content": {
+                                                                    "directives": {
+                                                                        "renderer": true,
+                                                                        "rendererArgs": [
+                                                                            {
+                                                                                "name": "$rowData",
+                                                                                "propType": "object"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "props": {
+                                                                        "defaultValue": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData.field42771_0"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._label"
+                                                                            }
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._name"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "elementType": "InputField"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "title": "出发地(其他)",
+                                                            "id": "42765",
+                                                            "render": {
+                                                                "type": "element",
+                                                                "content": {
+                                                                    "directives": {
+                                                                        "renderer": true,
+                                                                        "rendererArgs": [
+                                                                            {
+                                                                                "name": "$rowData",
+                                                                                "propType": "object"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "props": {
+                                                                        "defaultValue": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData.field42765_0"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._label"
+                                                                            }
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._name"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "elementType": "InputField"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "title": "目的地(其他)",
+                                                            "id": "42766",
+                                                            "render": {
+                                                                "type": "element",
+                                                                "content": {
+                                                                    "directives": {
+                                                                        "renderer": true,
+                                                                        "rendererArgs": [
+                                                                            {
+                                                                                "name": "$rowData",
+                                                                                "propType": "object"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "props": {
+                                                                        "defaultValue": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData.field42766_0"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._label"
+                                                                            }
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._name"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "elementType": "InputField"
+                                                                }
+                                                            }
+                                                        },
+                                                        {
+                                                            "title": "支付类型",
+                                                            "id": "42767",
+                                                            "render": {
+                                                                "type": "element",
+                                                                "content": {
+                                                                    "directives": {
+                                                                        "renderer": true,
+                                                                        "rendererArgs": [
+                                                                            {
+                                                                                "name": "$rowData",
+                                                                                "propType": "object"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "props": {
+                                                                        "defaultValue": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData.field42767_0"
+                                                                            }
+                                                                        },
+                                                                        "label": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._label"
+                                                                            }
+                                                                        },
+                                                                        "name": {
+                                                                            "type": "reference",
+                                                                            "content": {
+                                                                                "referenceType": "local",
+                                                                                "id": "$rowData._name"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "elementType": "InputField"
+                                                                }
+                                                            }
+                                                        }
+                                                    ],
+                                                    "fieldStatus": "READONLY",
+                                                    "id": "formtable_main_950_dt1",
+                                                    "showIndexColumn": true
+                                                },
+                                                "elementType": "Table"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "备注",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "bz"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "附件",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "fj"
+                                                },
+                                                "elementType": "FileListField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "openSchemaTypePC": "internal",
+                                                    "label": "东美订票平台",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "dmdppt",
+                                                    "openSchemaTypeSideBar": "internal",
+                                                    "openSchemaTypeMobile": "internal"
+                                                },
+                                                "elementType": "LinkField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "记账公司代码",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "jzgsdm"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        },
+                                        {
+                                            "type": "element",
+                                            "content": {
+                                                "props": {
+                                                    "label": "是否外派人员墨西哥国内出差",
+                                                    "fieldStatus": "READONLY",
+                                                    "name": "sfwprymxggncc"
+                                                },
+                                                "elementType": "InputField"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "elementType": "Group"
+                            }
+                        }
+                    ],
+                    "elementType": "PageWrapper"
+                }
+            },
+            "name": "root"
+        },
+        "name": "approval-trusteeship-doc"
+    },
+    "form_values": {
+        "formValues": {
+            "sqsj": "2025-08-11",
+            "sqrxm": [
+                "@user@user_id@uchey1455"
+            ],
+            "xmyskz": "",
+            "requestname": "2025年8月10日去往延锋国际座椅系统有限公司信息技术部参加培训的出差申请",
+            "sfwsncc": "否",
+            "fygsms": "延锋（重庆）汽车零部件有限公司",
+            "cbzxkz": "成本中心:4400440104，科目:0660200002,预算内外:预算外,超预算金额:1.0, 可用预算:0.00 = sap成本中心预算金额0.0减去  sap成本中心实际金额 0.0减去  sap成本中心承诺占用金额 0.0减去  One BPM成本中心占用金额 0.00\r\n",
+            "fj": [
+                {
+                    "url": "http://121.40.84.18/trusteeship/download?fileid=11172769",
+                    "uid": "11172769",
+                    "size": "(181K)",
+                    "name": "直系经理审批截图.jpg"
+                }
+            ],
+            "gsdm": "4400",
+            "lrzxdm": "0044004401",
+            "pjzs": "",
+            "nbdd": "",
+            "sqrzg": [
+                "@user@user_id@awan4816"
+            ],
+            "nbddlx": "",
+            "dmdppt": {
+                "url": "https://yfqc.easyfees.cn/fcc/login",
+                "text": "https://yfqc.easyfees.cn/fcc/login"
+            },
+            "bm": "YFS/YFS-执行委员会/YFS-整椅执委会/YFS-职能部门/YFS-信息技术部/YFS-信息技术部-IT研发",
+            "jzgsdm": "",
+            "sqbh": "HR08-20250811-0493",
+            "zxmhwbsh": "",
+            "sqrbm": "YFS/YFS-执行委员会/YFS-整椅执委会/YFS-职能部门/YFS-信息技术部/YFS-信息技术部-IT研发",
+            "bz": "",
+            "sm": "从重庆基地去往延锋国际座椅系统有限公司信息技术部参加培训，出差地点为上海，出差时间为2025年8月10日至2025年9月26日，之前因为成本中心选择错误，因此重新申请",
+            "formtable_main_950_dt1": [
+                {
+                    "field42767_0": "公司支付",
+                    "field42766_0": "",
+                    "field42759_0": "1080236000",
+                    "field42771_0": "上海",
+                    "field42761_0": "2025-08-10",
+                    "field42760_0": [
+                        "@user@user_id@uchey1455"
+                    ],
+                    "field42770_0": "重庆",
+                    "field42763_0": "飞机",
+                    "field42762_0": "2025-08-10",
+                    "field42765_0": "",
+                    "field42764_0": "CN",
+                    "key": "formtable_main_950_dt1_0"
+                },
+                {
+                    "field42767_0": "公司支付",
+                    "field42766_0": "",
+                    "field42759_0": "1080236000",
+                    "field42771_0": "重庆",
+                    "field42761_0": "2025-09-26",
+                    "field42760_0": [
+                        "@user@user_id@uchey1455"
+                    ],
+                    "field42770_0": "上海",
+                    "field42763_0": "飞机",
+                    "field42762_0": "2025-09-26",
+                    "field42765_0": "",
+                    "field42764_0": "CN",
+                    "key": "formtable_main_950_dt1_1"
+                }
+            ],
+            "sqlx": "国内出差申请",
+            "lrzxms": "座椅重庆子公共",
+            "fycdbmdm": "4400440104 ",
+            "gsms": "延锋（重庆）汽车零部件有限公司",
+            "sfglxm": "No",
+            "fylrzxms": "座椅重庆子公共",
+            "bgsybg": "",
+            "fqrxm": [
+                "@user@user_id@uchey1455"
+            ],
+            "gw": "应届大学生 ",
+            "sqrgzdd": "CN-Chongqing(YFS) ",
+            "clsqdcs": "",
+            "bgsm": "",
+            "sfwprymxggncc": "否",
+            "sqrqy": "AP",
+            "sfwkcsxxmpx": "否",
+            "lrzxkz": "",
+            "fqrgh": "1080236000",
+            "sqrgh": "1080236000",
+            "ccsysq": "培训或公司统一组织的会议活动",
+            "cbzxmc": "座椅重庆区域中央-IT",
+            "sqrgj": "CN"
+        },
+        "doc": {
+            "definitionName": "HR-08-国内出差申请/变更",
+            "sourceName": "泛微OA",
+            "initiators": [],
+            "startTime": 1754898989000,
+            "showPrint": false,
+            "supportPrint": false,
+            "headerColor": "#245BDB",
+            "layout": "inline",
+            "belongingSystem": "other",
+            "sharedFor": "anyone"
+        }
+    }
+}

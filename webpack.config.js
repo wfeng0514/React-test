@@ -61,7 +61,7 @@ module.exports = {
         use: { loader: 'worker-loader' },
       },
       {
-        test: /\.(js|jsx)$/, // 匹配所有 js 和 jsx 文件
+        test: /\.(js|jsx|ts|tsx)$/, // 匹配所有 js 和 jsx 文件
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader', // 使用 Babel loader
