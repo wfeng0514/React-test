@@ -2,10 +2,22 @@
   padding: 24px;
   background: #f5f5f5;
   min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+
+  // 布局样式
+  .mainContent {
+    width: 80%;
+    margin-right: 12px;
+  }
+  .sidebar {
+    width: 20%;
+  }
 }
 
 .card {
   margin-bottom: 24px;
+  overflow: hidden;
 
   :global(.ant-card-head) {
     // background: #fafafa;
@@ -150,5 +162,175 @@
 
   :global(.ant-form-item-control) {
     flex: 0 0 100% !important;
+  }
+}
+
+// 审批历史样式
+.approvalHistory {
+  position: relative;
+
+  // 垂直连接线
+  &::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 24px;
+    bottom: 0;
+    // width: 2px;
+    // background: #e8e8e8;
+    border: 1px dashed #e8e8e8;
+    z-index: 1;
+  }
+
+  .historyItem {
+    position: relative;
+    padding: 16px 0 16px 40px;
+
+    &:last-child {
+      border-bottom: none;
+
+      // 占位
+      &::before {
+        content: "";
+        position: absolute;
+        left: 16px;
+        top: 36px;
+        width: 2px;
+        height: calc(100% - 22px);
+        background: #fff;
+        z-index: 999;
+      }
+    }
+
+    // 状态图标
+    &::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 22px;
+      width: 8px;
+      height: 8px;
+      border: 3px solid #7996b5;
+      background: #fff;
+      border-radius: 50%;
+      z-index: 3;
+    }
+
+    // 成功状态
+    &.success {
+      // &::before {
+      //   border-color: #52c41a;
+      // }
+      &::after {
+        background: #52c41a;
+      }
+    }
+
+    // 处理中状态
+    &.processing {
+      // &::before {
+      //   border-color: #1890ff;
+      // }
+      &::after {
+        background: #1890ff;
+        animation: pulse 1.5s infinite;
+      }
+    }
+
+    // 驳回状态
+    &.reject {
+      // &::before {
+      //   border-color: #ff4d4f;
+      // }
+      &::after {
+        background: #ff4d4f;
+      }
+    }
+
+    // 默认状态
+    &.default {
+      // &::before {
+      //   border-color: #d9d9d9;
+      // }
+      &::after {
+        background: #d9d9d9;
+      }
+    }
+
+    .stepHeader {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+
+      .stepTitle {
+        font-weight: 600;
+        color: #333;
+        font-size: 12px;
+      }
+
+      .stepStatus {
+        padding: 0 5px;
+        font-size: 10px;
+        font-weight: 500;
+        margin-left: 8px;
+
+        &.success {
+          background: #f6ffed;
+          border: 1px solid #b7eb8f;
+          color: #52c41a;
+        }
+
+        &.processing {
+          background: #e6f7ff;
+          border: 1px solid #91d5ff;
+          color: #1890ff;
+        }
+
+        &.reject {
+          background: #fff2f0;
+          border: 1px solid #ffccc7;
+          color: #ff4d4f;
+        }
+
+        &.default {
+          background: #fafafa;
+          border: 1px solid #d9d9d9;
+          color: #666;
+        }
+      }
+    }
+
+    .stepTime {
+      color: #666;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .stepComment {
+      color: #333;
+      font-size: 13px;
+      line-height: 1.5;
+      background: #ebf2fc;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      // border-left: 3px solid #1890ff;
+    }
+  }
+}
+
+// 处理中状态的脉冲动画
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.7;
   }
 }

@@ -3,6 +3,8 @@ import { Card, Form, Input, Table, Typography, Tooltip } from 'antd';
 import { UserOutlined, FileTextOutlined, LinkOutlined } from '@ant-design/icons';
 // 类型定义
 import { SchemaData, FormField, FileItem, TableRow } from './types';
+// 导入审批历史组件
+import ApprovalHistory, { ApprovalHistoryItem } from './ApprovalHistory';
 import styles from './approvalForm.module.scss';
 
 const { Text } = Typography;
@@ -30,7 +32,7 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
 
   // 判断是否为长标签
   const isLongLabel = (label: string): boolean => {
-    return label.length > 8; // 中文超过4个字符或英文超过8个字符视为长标签
+    return label.length > 8;
   };
 
   // 处理标签显示 - 三点省略 + Tooltip
@@ -45,6 +47,7 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
               whiteSpace: 'nowrap',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
+              cursor: 'help',
             }}
           >
             {label}
@@ -78,6 +81,12 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
     },
   };
 
+  // 输入框样式
+  const inputStyle = {
+    backgroundColor: '#f5f5f5',
+    borderRadius: '4px',
+  };
+
   // 渲染不同类型的表单字段
   const renderFormField = (field: FormField) => {
     const { props, elementType } = field.content;
@@ -93,7 +102,7 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
     if (elementType === 'InputField') {
       return (
         <Form.Item key={name} label={renderLabel(label)} {...formItemLayout} className={formItemClass}>
-          <Input value={value || ''} readOnly={fieldStatus === 'READONLY'} placeholder={label} />
+          <Input value={value || ''} readOnly={fieldStatus === 'READONLY'} placeholder={label} style={inputStyle} />
         </Form.Item>
       );
     }
@@ -102,7 +111,7 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
       const displayValue = Array.isArray(value) ? value.join(', ') : value;
       return (
         <Form.Item key={name} label={renderLabel(label)} {...formItemLayout} className={formItemClass}>
-          <Input value={displayValue || ''} readOnly={fieldStatus === 'READONLY'} prefix={<UserOutlined />} placeholder={label} />
+          <Input value={displayValue || ''} readOnly={fieldStatus === 'READONLY'} prefix={<UserOutlined />} placeholder={label} style={inputStyle} />
         </Form.Item>
       );
     }
@@ -166,7 +175,7 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
     // 默认情况
     return (
       <Form.Item key={name} label={renderLabel(label)} {...formItemLayout} className={formItemClass}>
-        <Input value={value || ''} readOnly={fieldStatus === 'READONLY'} placeholder={label} />
+        <Input value={value || ''} readOnly={fieldStatus === 'READONLY'} placeholder={label} style={inputStyle} />
       </Form.Item>
     );
   };
@@ -213,7 +222,17 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
     return null;
   };
 
-  return <div className={styles.container}>{renderGroup()}</div>;
+  return (
+    <div className={styles.container}>
+      {/* 左侧主内容 */}
+      <div className={styles.mainContent}>{renderGroup()}</div>
+
+      {/* 右侧审批历史 */}
+      <div className={styles.sidebar}>
+        <ApprovalHistory />
+      </div>
+    </div>
+  );
 };
 
 export default ApprovalForm;
