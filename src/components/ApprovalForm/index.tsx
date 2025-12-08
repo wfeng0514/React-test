@@ -1,10 +1,8 @@
 import React from 'react';
-import { Card, Form, Input, Table, Typography, Tooltip } from 'antd';
-import { UserOutlined, FileTextOutlined, LinkOutlined } from '@ant-design/icons';
-// 类型定义
-import { SchemaData, FormField, FileItem, TableRow } from './types';
-// 导入审批历史组件
-import ApprovalHistory, { ApprovalHistoryItem } from './ApprovalHistory';
+import { Card, Form, Input, Typography, Tooltip } from 'antd';
+import { FileTextOutlined, LinkOutlined } from '@ant-design/icons';
+import { SchemaData, FormField, FileItem } from './types';
+import ApprovalChat from './ApprovalChat';
 import styles from './approvalForm.module.scss';
 
 const { Text } = Typography;
@@ -14,48 +12,35 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
   const { form_ui, form_values } = schemaData;
   const formValues = form_values.formValues;
 
-  // 获取分组字段
-  const getGroupFields = (): FormField[] => {
+  // 获取分组
+  const getGroup = (): Array<FormField[]> => {
     try {
-      const groupField = form_ui.root.node.content.children[0];
-      if (groupField?.content?.elementType === 'Group' && groupField.content.props.children) {
-        return groupField.content.props.children;
+      const groups = form_ui.root.node.content.children;
+      let arr: Array<FormField[]> = [];
+
+      // 遍历分组字段
+      for (const child of groups) {
+        if (child?.content?.elementType === 'Group') {
+          arr.push(child.content.props?.children || []);
+        }
       }
-      return [];
+
+      return arr;
     } catch (error) {
       console.error('Error parsing group fields:', error);
       return [];
     }
   };
 
-  const groupFields = getGroupFields();
-
-  // 判断是否为长标签
-  const isLongLabel = (label: string): boolean => {
-    return label.length > 8;
-  };
+  const groups = getGroup();
 
   // 处理标签显示 - 三点省略 + Tooltip
   const renderLabel = (label: string) => {
-    if (isLongLabel(label)) {
-      return (
-        <Tooltip title={label} placement="topLeft">
-          <span
-            style={{
-              display: 'inline-block',
-              width: '100%',
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              cursor: 'help',
-            }}
-          >
-            {label}
-          </span>
-        </Tooltip>
-      );
-    }
-    return label;
+    return (
+      <Tooltip title={label} placement="topLeft">
+        <span style={{ display: 'inline-block', width: '100%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{label}</span>
+      </Tooltip>
+    );
   };
 
   // 将字段分成两列
@@ -67,26 +52,6 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
     };
   };
 
-  const { leftColumn, rightColumn } = splitFieldsIntoColumns(groupFields);
-
-  // 表单布局配置
-  const formItemLayout = {
-    labelCol: {
-      xs: { span: 24 },
-      sm: { span: 8 },
-    },
-    wrapperCol: {
-      xs: { span: 24 },
-      sm: { span: 16 },
-    },
-  };
-
-  // 输入框样式
-  const inputStyle = {
-    backgroundColor: '#f5f5f5',
-    borderRadius: '4px',
-  };
-
   // 渲染不同类型的表单字段
   const renderFormField = (field: FormField) => {
     const { props, elementType } = field.content;
@@ -94,15 +59,15 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
     const value = formValues[name];
 
     // 动态类名处理长标签
-    let formItemClass = isLongLabel(label) ? `${styles.formItem} ${styles.longLabel}` : styles.formItem;
+    let formItemClass = styles.formItem;
     if (fieldStatus !== 'READONLY') {
       formItemClass = `${formItemClass}  ${styles.editable}`;
     }
 
     if (elementType === 'InputField') {
       return (
-        <Form.Item key={name} label={renderLabel(label)} {...formItemLayout} className={formItemClass}>
-          <Input value={value || ''} readOnly={fieldStatus === 'READONLY'} placeholder={label} style={inputStyle} />
+        <Form.Item key={name} label={renderLabel(label)} className={formItemClass}>
+          <Input value={value || ''} readOnly={fieldStatus === 'READONLY'} placeholder={label} />
         </Form.Item>
       );
     }
@@ -110,15 +75,15 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
     if (elementType === 'UserField') {
       const displayValue = Array.isArray(value) ? value.join(', ') : value;
       return (
-        <Form.Item key={name} label={renderLabel(label)} {...formItemLayout} className={formItemClass}>
-          <Input value={displayValue || ''} readOnly={fieldStatus === 'READONLY'} prefix={<UserOutlined />} placeholder={label} style={inputStyle} />
+        <Form.Item key={name} label={renderLabel(label)} className={formItemClass}>
+          <Input value={displayValue || ''} readOnly={fieldStatus === 'READONLY'} placeholder={label} />
         </Form.Item>
       );
     }
 
     if (elementType === 'FileListField') {
       return (
-        <Form.Item key={name} label={renderLabel(label)} {...formItemLayout} className={formItemClass}>
+        <Form.Item key={name} label={renderLabel(label)} className={formItemClass}>
           {Array.isArray(value) && value.length > 0 ? (
             <div>
               {value.map((file: FileItem) => (
@@ -139,7 +104,7 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
 
     if (elementType === 'LinkField') {
       return (
-        <Form.Item key={name} label={renderLabel(label)} {...formItemLayout} className={formItemClass}>
+        <Form.Item key={name} label={renderLabel(label)} className={formItemClass}>
           {value ? (
             <a href={value.url} target="_blank" rel="noopener noreferrer" className={styles.linkItem}>
               <LinkOutlined className={styles.linkIcon} />
@@ -152,30 +117,10 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
       );
     }
 
-    if (elementType === 'Table') {
-      const tableData = formValues[props.id || name] || [];
-      const columns =
-        props.visibleColumns?.map((col: any) => ({
-          title: col.title,
-          dataIndex: col.id,
-          key: col.id,
-          render: (value: any, record: TableRow) => {
-            const fieldValue = record[`field${col.id}_0`] || value;
-            return <Text>{fieldValue}</Text>;
-          },
-        })) || [];
-
-      return (
-        <Form.Item key={name} label={renderLabel(props.label || '表格数据')} labelCol={{ span: 24 }} wrapperCol={{ span: 24 }} className={styles.fullWidthItem}>
-          <Table dataSource={tableData} columns={columns} pagination={false} size="small" bordered rowKey="key" />
-        </Form.Item>
-      );
-    }
-
     // 默认情况
     return (
-      <Form.Item key={name} label={renderLabel(label)} {...formItemLayout} className={formItemClass}>
-        <Input value={value || ''} readOnly={fieldStatus === 'READONLY'} placeholder={label} style={inputStyle} />
+      <Form.Item key={name} label={renderLabel(label)} className={formItemClass}>
+        <Input value={value || ''} readOnly={fieldStatus === 'READONLY'} placeholder={label} />
       </Form.Item>
     );
   };
@@ -188,48 +133,46 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
       const groupProps = groupField.content.props;
       const title = groupProps.title?.content?.fallback || '审批详情';
 
-      // 分离表格字段和普通字段
-      const tableFields = groupFields.filter((field) => field.content.elementType === 'Table');
-      const normalFields = groupFields.filter((field) => field.content.elementType !== 'Table');
+      return groups.map((list: FormField[], index) => {
+        /**
+         * 将普通字段分成两列
+         */
+        const normalFields = list.filter((field) => field.content.elementType !== 'Table');
+        const { leftColumn, rightColumn } = splitFieldsIntoColumns(normalFields);
 
-      // 将普通字段分成两列
-      const { leftColumn, rightColumn } = splitFieldsIntoColumns(normalFields);
-
-      return (
-        <Card title={title} className={styles.card}>
-          <div className={styles.formLayout}>
-            {/* 左列 */}
-            <div className={styles.column}>
-              <Form layout="horizontal">{leftColumn.map(renderFormField)}</Form>
+        return (
+          <Card className={styles.card}>
+            <div className={styles.cardHeader}>
+              <h3>{'FIN-09-供应商紧急付款审批表'}</h3>
+              {index === 0 ? (
+                <div className={styles.emergency}>
+                  <div className={styles.urgent}>紧急</div>
+                  <div className={styles.business}>业务包</div>
+                  <div className={styles.attention}>此申请金额较大，需重点关注！</div>
+                </div>
+              ) : null}
             </div>
-
-            {/* 右列 */}
-            <div className={styles.column}>
-              <Form layout="horizontal">{rightColumn.map(renderFormField)}</Form>
+            <div className={styles.formLayout}>
+              <Form layout="horizontal" className={styles.form_ui}>
+                <div className={styles.column}>{leftColumn.map(renderFormField)}</div>
+                <div className={styles.column}>{rightColumn.map(renderFormField)}</div>
+              </Form>
             </div>
-          </div>
-
-          {/* 表格字段单独渲染，占满整行 */}
-          {tableFields.map((field) => (
-            <div key={field.content.props.name} className={styles.tableSection}>
-              {renderFormField(field)}
-            </div>
-          ))}
-        </Card>
-      );
+          </Card>
+        );
+      });
     }
-
-    return null;
   };
 
   return (
     <div className={styles.container}>
-      {/* 左侧主内容 */}
-      <div className={styles.mainContent}>{renderGroup()}</div>
+      <div className={styles.mainContent}>
+        {renderGroup()}
+        <div className={styles.reference}>参照流程指导书：YFS-LSFI-WI-03-10</div>
+      </div>
 
-      {/* 右侧审批历史 */}
       <div className={styles.sidebar}>
-        <ApprovalHistory />
+        <ApprovalChat />
       </div>
     </div>
   );

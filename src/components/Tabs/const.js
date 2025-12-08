@@ -11,6 +11,7 @@ import ApprovalForm from '@/components/ApprovalForm';
 import schema from '../../assets/json/schema.json';
 
 export const TABS = [
+  { name: '超级审批', content: <ApprovalForm schemaData={schema} /> },
   { name: '自定义手风琴', content: <CustomAccordion /> },
   { name: '滚动请求', content: <ScrollList /> },
   { name: '滚动请求1', content: <ScrollList1 /> },
@@ -33,5 +34,4 @@ export const TABS = [
   { name: 'Worker', content: <WorkerTest /> },
   { name: '粘贴滚动效果', content: <HoverScrollComponent /> },
   { name: 'File', content: <File /> },
-  { name: '超级审批', content: <ApprovalForm schemaData={schema} /> },
 ];

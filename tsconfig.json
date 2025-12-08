@@ -16,6 +16,6 @@
       "@/*": ["./src/*"],
     }
   },
-  "include": ["**/*.ts", "src/components/ApprovalForm/index.tsx",],
+  "include": ["**/*.ts", "**/*.tsx", "src/components/File/index.jsx"],
   "exclude": ["node_modules"]
 }
