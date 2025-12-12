@@ -8,9 +8,11 @@ import WorkerTest from '@/components/WorkerTest';
 import HoverScrollComponent from '@/components/HoverScrollComponent';
 import File from '@/components/File';
 import ApprovalForm from '@/components/ApprovalForm';
-import schema from '../../assets/json/schema.json';
+import Diagram from '@/components/diagram';
+import schema from '@/assets/json/schema.json';
 
 export const TABS = [
+  { name: '图表', content: <Diagram /> },
   { name: '超级审批', content: <ApprovalForm schemaData={schema} /> },
   { name: '自定义手风琴', content: <CustomAccordion /> },
   { name: '滚动请求', content: <ScrollList /> },

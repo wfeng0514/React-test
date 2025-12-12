@@ -46,10 +46,7 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
   // 将字段分成两列
   const splitFieldsIntoColumns = (fields: FormField[]) => {
     const midIndex = Math.ceil(fields.length / 2);
-    return {
-      leftColumn: fields.slice(0, midIndex),
-      rightColumn: fields.slice(midIndex),
-    };
+    return { leftColumn: fields.slice(0, midIndex), rightColumn: fields.slice(midIndex) };
   };
 
   // 渲染不同类型的表单字段
@@ -125,49 +122,37 @@ const ApprovalForm: React.FC<{ schemaData: SchemaData }> = ({ schemaData }) => {
     );
   };
 
-  // 渲染分组
-  const renderGroup = () => {
-    const groupField = form_ui.root.node.content.children[0];
-
-    if (groupField?.content?.elementType === 'Group') {
-      const groupProps = groupField.content.props;
-      const title = groupProps.title?.content?.fallback || '审批详情';
-
-      return groups.map((list: FormField[], index) => {
-        /**
-         * 将普通字段分成两列
-         */
-        const normalFields = list.filter((field) => field.content.elementType !== 'Table');
-        const { leftColumn, rightColumn } = splitFieldsIntoColumns(normalFields);
-
-        return (
-          <Card className={styles.card}>
-            <div className={styles.cardHeader}>
-              <h3>{'FIN-09-供应商紧急付款审批表'}</h3>
-              {index === 0 ? (
-                <div className={styles.emergency}>
-                  <div className={styles.urgent}>紧急</div>
-                  <div className={styles.business}>业务包</div>
-                  <div className={styles.attention}>此申请金额较大，需重点关注！</div>
-                </div>
-              ) : null}
-            </div>
-            <div className={styles.formLayout}>
-              <Form layout="horizontal" className={styles.form_ui}>
-                <div className={styles.column}>{leftColumn.map(renderFormField)}</div>
-                <div className={styles.column}>{rightColumn.map(renderFormField)}</div>
-              </Form>
-            </div>
-          </Card>
-        );
-      });
-    }
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.mainContent}>
-        {renderGroup()}
+        {groups.map((list: FormField[], index) => {
+          /**
+           * 将普通字段分成两列
+           */
+          const fields = list.filter((field) => field.content.elementType !== 'Table');
+          const { leftColumn, rightColumn } = splitFieldsIntoColumns(fields);
+
+          return (
+            <Card className={styles.card}>
+              <div className={styles.cardHeader}>
+                <h3>{'FIN-09-供应商紧急付款审批表'}</h3>
+                {index === 0 ? (
+                  <div className={styles.emergency}>
+                    <div className={styles.urgent}>紧急</div>
+                    <div className={styles.business}>业务包</div>
+                    <div className={styles.attention}>此申请金额较大，需重点关注！</div>
+                  </div>
+                ) : null}
+              </div>
+              <div className={styles.formLayout}>
+                <Form layout="horizontal" className={styles.form_ui}>
+                  <div className={styles.column}>{leftColumn.map(renderFormField)}</div>
+                  <div className={styles.column}>{rightColumn.map(renderFormField)}</div>
+                </Form>
+              </div>
+            </Card>
+          );
+        })}
         <div className={styles.reference}>参照流程指导书：YFS-LSFI-WI-03-10</div>
       </div>
 

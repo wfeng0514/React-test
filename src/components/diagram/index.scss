@@ -1,0 +1,224 @@
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+
+// body {
+//   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+//   background: linear-gradient(135deg, #0c1a22 0%, #1a2b3a 50%, #0c1a22 100%);
+//   color: #fff;
+//   min-height: 100vh;
+//   line-height: 1.6;
+//   overflow-x: hidden;
+// }
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &-header {
+    text-align: center;
+    padding: 40px 20px;
+    // background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      // background: linear-gradient(90deg, #4fc3f7, #69f0ae, #ff4081);
+      // -webkit-background-clip: text;
+      background-clip: text;
+      // color: transparent;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+
+    .app-subtitle {
+      color: #b0bec5;
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &-main {
+    flex: 1;
+    padding: 30px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    &-row {
+      display: flex;
+      gap: 30px;
+
+      @media (max-width: 1024px) {
+        flex-direction: column;
+      }
+    }
+
+    &-col {
+      &.chart-col {
+        flex: 3;
+      }
+
+      &.legend-col {
+        flex: 1;
+        min-width: 280px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      &.full-col {
+        width: 100%;
+      }
+    }
+  }
+
+  .data-controls {
+    background: linear-gradient(145deg, rgba(25, 35, 45, 0.95), rgba(35, 45, 55, 0.95));
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow:
+      0 5px 20px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    h4 {
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .btn-refresh {
+      width: 100%;
+      background: linear-gradient(135deg, #673ab7, #9c27b0);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 20px;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(156, 39, 176, 0.4);
+      }
+    }
+
+    .stats {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .stat-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .stat-label {
+          color: #b0bec5;
+          font-size: 0.9rem;
+        }
+
+        .stat-value {
+          color: #69f0ae;
+          font-weight: 600;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+
+  &-footer {
+    text-align: center;
+    padding: 20px;
+    // background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 30px;
+
+    p {
+      color: #90a4ae;
+      margin-bottom: 15px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.9rem;
+
+      span {
+        color: #b0bec5;
+      }
+
+      .link-item {
+        color: #4fc3f7;
+        padding: 4px 12px;
+        background: rgba(79, 195, 247, 0.1);
+        border-radius: 4px;
+        border: 1px solid rgba(79, 195, 247, 0.3);
+      }
+    }
+  }
+}
+
+// // 滚动条样式
+// ::-webkit-scrollbar {
+//   width: 10px;
+//   height: 10px;
+// }
+
+// ::-webkit-scrollbar-track {
+//   background: rgba(0, 0, 0, 0.2);
+//   border-radius: 5px;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background: linear-gradient(135deg, #4fc3f7, #69f0ae);
+//   border-radius: 5px;
+// }
+
+// ::-webkit-scrollbar-thumb:hover {
+//   background: linear-gradient(135deg, #29b6f6, #00e676);
+// }
+
+// // 加载动画
+// @keyframes pulse {
+//   0%,
+//   100% {
+//     opacity: 1;
+//   }
+//   50% {
+//     opacity: 0.5;
+//   }
+// }
+
+// .loading {
+//   animation: pulse 1.5s infinite;
+// }
